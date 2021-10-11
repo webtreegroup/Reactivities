@@ -1,29 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import axios from 'axios';
-import { Header, List } from 'semantic-ui-react';
+import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { Main } from './layouts';
 
-function App() {
-  const [activities, setActivities] = useState([]);
-  
-  useEffect(() => {
-    axios.get('http://localhost:5001/api/activities').then((response) => {
-      setActivities(response.data)
-    })
-  }, []);
+const queryClient = new QueryClient();
 
+export const App: React.FC = React.memo(() => {
   return (
-    <div>
-      <Header as="h2" icon="users" content="Reactivities" />
-
-      <List>
-        {console.log(activities)}
-        {activities.map((activity: any) => (
-          <List.Item key={activity.id}>{activity.title}</List.Item>
-        ))}
-      </List>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <Main />
+    </QueryClientProvider>
   );
-}
-
-export default App;
+})
