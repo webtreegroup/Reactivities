@@ -1,23 +1,15 @@
 import React from 'react'
-import axios from 'axios'
 import { Button, Item, Label, Segment } from 'semantic-ui-react'
 import { useQuery } from 'react-query'
 import { ActivitiesListProps } from './ActivitiesList.types'
-import { API_URL } from 'core/consts'
 import { List as ListLoader } from 'react-content-loader'
-import { ActivityProps } from 'core/types'
+import { ActivityApi } from 'core/api'
 
 export const ActivitiesList: React.FC<ActivitiesListProps> = React.memo(
 	({ onShowActivity }) => {
 		const { isLoading, isError, data, error } = useQuery(
 			'activities',
-			async () => {
-				const { data } = await axios.get<ActivityProps[]>(
-					`${API_URL}/activities`
-				)
-
-				return data
-			}
+			async () => ActivityApi.list()
 		)
 
 		if (isError) {

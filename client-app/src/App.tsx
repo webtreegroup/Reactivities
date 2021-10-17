@@ -1,6 +1,6 @@
 import React from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
-import { Main } from './layouts'
+import { Main } from 'core/layouts'
 
 const queryClient = new QueryClient()
 
