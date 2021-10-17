@@ -11,6 +11,7 @@
 		"@types/react": "^17.0.21",
 		"@types/react-dom": "^17.0.9",
 		"axios": "^0.22.0",
+		"husky": "^7.0.2",
 		"prettier": "^2.4.1",
 		"react": "^17.0.2",
 		"react-content-loader": "^6.0.3",
@@ -28,7 +29,8 @@
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"format": "npx prettier --write ."
+		"format": "npx prettier --write .",
+		"prepare": "cd .. && husky install client-app/.husky"
 	},
 	"eslintConfig": {
 		"extends": [
